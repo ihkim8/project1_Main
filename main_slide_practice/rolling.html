@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* img 72px 여백 8px = 총 80px */
+      #frame {
+        width: 232px;
+        height: 88px;
+        position: relative;
+        margin: 10px auto;
+        border: 1px solid blue;
+        overflow: hidden;
+      }
+      #banner {
+        width: 400px;
+        border: 1px solid red;
+        height: 54px;
+        display: flex;
+        justify-content: space-evenly;
+        margin: 0;
+      }
+      #banner li {
+        flex: 0 0 78px;
+        /* shrink grow basis 순서대로 */
+        list-style: none;
+        width: 80px;
+        height: 100%;
+        background-color: gray;
+        font-size: 2em;
+        margin-right: 1px;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      //document.addEventListener("DOMContentLoaded",function(){})
+      $(function () {
+        //변수
+        let list = $("#banner"),
+          num = 0;
+        const show_num = 3,
+          total = list.find("li").length,
+          li_width = list.find("li").eq(0).width(),
+          copyObj = list.find("li").clone(),
+          ctrl = $(".ctrl"); //li의 갯수
+        //요소의 갯수, 길이 length
+        // alert(total);
+        //const ;
+        // const .css("background", "red");
+        list.append(copyObj);
+        // console.log(li_width);
+        //슬라이드기능 구현시 번호를 저장할 변수를 먼저만들자
+        // let num = 0;
+
+        const timer = setInterval(autoplay, 2000);
+        clearInterval(timer);
+        setInterval(autoplay, 2000);
+
+        ctrl.click(function () {
+          if (ctrl.text() === "stop") {
+            ctrl.text("play");
+            clearInterval(timer);
+          } else {
+            ctrl.text("stop");
+            setInterval(autoplay, 2000);
+          }
+          //console.log(ctrl.text() === "stop");
+          return false;
+        });
+
+        // return false;
+        // console.log(stop);
+        function autoplay() {
+          if (num == total) {
+            num = 0;
+            list.css("margin-left", 0);
+          }
+          num++;
+          console.log(num);
+          //margin, position
+          list.stop().animate({ "margin-left": -li_width * num }, 1000);
+        }
+        $(".next").click(function () {
+          if (num == total) {
+            num = 0;
+            list.css("margin-left", 0);
+          }
+          num++;
+          console.log(num);
+          //margin, position
+          list.stop().animate({ "margin-left": -li_width * num }, 1000);
+          return false;
+        });
+        $(".prev").click(function () {
+          if (num == 0) {
+            num = total; //3
+            list.css("margin-left", -li_width * num);
+          }
+          num--;
+          list.stop().animate({ "margin-left": -li_width * num }, 500);
+          return false;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Rolling</h1>
+    <div id="frame">
+      <ul id="banner">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+    </div>
+    <a href="#" class="prev">prev</a>
+    <a href="#" class="next">next</a>
+    <a href="#" class="ctrl">stop</a>
+  </body>
+</html>

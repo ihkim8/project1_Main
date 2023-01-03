@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="galleryWrap">
+      <h1>이미지갤러리</h1>
+      <p>
+        <!-- a href="#"을 주면 클릭하고 위로 점프 -->
+        <a href="javascript:void(0)" onclick="prevGallery()">⏪️</a>
+        <img src="img/img1.jpg" width="300" height="200" id="gallery" />
+        <!-- javascript에서 쓰기 위해 id 속성을 줌 -->
+        <a href="javascript:void(0)" onclink="nextGallery()">⏩️</a>
+      </p>
+    </div>
+    <script>
+      let num = 1;
+      function nextGallery() {
+        num++; //1씩 더하라는 실행문
+        //if 넣어주면 되네!! 빼 먹음
+        if (num >= 7) {
+          num = 1;
+        }
+        document.getElementById("gallery").src = "img/img" + num + ".jpg";
+        //id 갤러리에서 엘리먼트 가져오기 실행문
+        //.src
+        return false;
+      }
+
+      function prevGallery() {
+        num--; //1씩 빼라는 실행문
+        // consol.log(num);
+        if (num <= 0) {
+          num = 7;
+        }
+        document.getElementById("gallery").src = "img/img" + num + ".jpg";
+        //id 갤러리에서 엘리먼트 가져오기 실행문
+        //.src
+        return false;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        overflow-y: scroll;
+        width: 100%;
+        height: 100%;
+      }
+      ul {
+        list-style: none;
+      }
+      #brandVisual {
+        width: 100%;
+        overflow: hidden;
+        height: 500px;
+        min-width: 1000px;
+        background-color: #8c8c8c;
+        position: relative;
+        /* animate되는 요소들은 둘 중 하나만 비율값으로 줄 수 있음. 둘다 주면 안됨. */
+      }
+      #brandVisual ul {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        display: flex;
+        /* 포지션 속성을 사용할 것이기 때문에 플렉스는 사실 필요 없음 */
+        /* right는 부모의 길이가 구체적으로 잡혀있을 때 쓸 수 있음(절대단위일 때) relative에서도 안 잡힘. 상대적일 때 right를 못 씀. bottom도 높이가 정해져있을 때 쓸 수 있음. 상대적일 때 못 씀. 부모 값을 고정시켜야 적용 가능.*/
+      }
+      #brandVisual ul li {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        /* line-height: 500px; */
+        font-size: 5em;
+      }
+      #brandVisual img {
+        width: 100%;
+        height: 100%;
+      }
+      .visual_0 {
+        left: 0%;
+        background: red;
+      }
+      .visual_1 {
+        left: 100%;
+        background: green;
+      }
+      .visual_2 {
+        left: 200%;
+        background: blue;
+      }
+      #buttonList {
+        display: flex;
+        position: absolute;
+        /* body가 기준이 됨 */
+        top: 450px;
+        left: 50%;
+        margin-left: -300px;
+      }
+
+      #buttonList li {
+        width: 100px;
+        height: 100px;
+
+        /* background: url(/javascript/04/img/btn.png) 0 0 no-repeat; */
+        /* background: url(/javascript/04/img/btn.png) 0 -16px no-repeat; */
+      }
+      #buttonList li.on {
+        width: 100px;
+        height: 100px;
+        /* background: url(/javascript/04/img/btn.png) 0 0 no-repeat; */
+      }
+      #buttonList img {
+        width: 280px;
+        height: 180px;
+        z-index: 99999;
+
+        /* background: url(/javascript/04/img/btn.png) 0 0 no-repeat; */
+        /* background: url(/javascript/04/img/btn.png) 0 -16px no-repeat; */
+      }
+
+      .button1 {
+        margin-left: -150px;
+      }
+      .button2 {
+        margin-left: -50px;
+      }
+      .button3 {
+        margin-left: 100px;
+      }
+      .button4 {
+        margin-left: 300px;
+      }
+      #buttonList a {
+        text-decoration: none;
+        text-align: center;
+      }
+      .controls {
+        display: flex;
+        position: absolute;
+        /* top: 200px;
+        left: 50px; */
+        /* border: 1px solid #333; */
+      }
+
+      /* .controls li {
+        width: 16px;
+        height: 22px;
+        margin-left: 10px;
+      }
+
+      .controls li a {
+        display: block;
+        width: 16px;
+        height: 22px;
+      } */
+
+      .controls li.prev a {
+      }
+
+      .button1 {
+        width: 280px;
+        height: 180px;
+      }
+      .button1 img {
+        margin-left: 250px;
+        margin-top: -92px;
+      }
+      .button2 {
+        width: 280px;
+        height: 180px;
+        margin-left: -50px;
+      }
+      .button2 img {
+        margin-left: 64px;
+        margin-top: -92px;
+      }
+      .button3 {
+        width: 280px;
+        height: 180px;
+      }
+      .button3 img {
+        margin-left: -68px;
+        margin-top: -92px;
+      }
+      .button4 {
+        width: 280px;
+        height: 180px;
+        margin-left: 300px;
+      }
+      img.button4 {
+        margin-left: -279px;
+        margin-top: -90px;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="slide01.js"></script>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="brandVisual">
+        <ul>
+          <li class="visual_0">
+            <a href="#">
+              <img src="./img/main_visual_img1.jpeg" />
+              img1</a
+            >
+          </li>
+          <li class="visual_1">
+            <a href="#">
+              <img src="./img/main_visual_img2.jpeg" />
+              img2</a
+            >
+          </li>
+          <li class="visual_1">
+            <a href="#">
+              <img src="./img/main_visual_img3.jpeg" />
+              img3</a
+            >
+          </li>
+          <li class="visual_1">
+            <a href="#">
+              <img src="./img/main_visual_img4.jpeg" />
+              img3</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <ul class="controls">
+      <li class="prev">
+        <a href="#" class="button1">
+          <img src="./img/main_visual_img1.jpeg" alt="제과" class="button1" />
+          <h3>제과</h3>
+        </a>
+      </li>
+      <li class="prev">
+        <a href="#" class="button2">
+          <img src="./img/main_visual_img2.jpeg" alt="음료" class="button2" />
+          <h3>음료</h3>
+        </a>
+      </li>
+      <li class="prev">
+        <a href="#" class="button3">
+          <img src="./img/main_visual_img3.jpeg" alt="간편대용식" class="button3" />
+          <h3>간편대용식</h3>
+        </a>
+      </li>
+      <li class="prev">
+        <a href="#" class="button4">
+          <img src="./img/main_visual_img4.jpeg" alt="바이오" class="button4" />
+          <h3>바이오</h3>
+        </a>
+      </li>
+      <li class="next">
+        <a href="#"></a>
+      </li>
+    </ul>
+  </body>
+</html>

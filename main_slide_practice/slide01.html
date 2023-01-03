@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        overflow-y: scroll;
+        width: 100%;
+        height: 100%;
+      }
+      ul {
+        list-style: none;
+      }
+      #brandVisual {
+        width: 100%;
+        overflow: hidden;
+        height: 500px;
+        min-width: 1000px;
+        background-color: #8c8c8c;
+        position: relative;
+        /* animate되는 요소들은 둘 중 하나만 비율값으로 줄 수 있음. 둘다 주면 안됨. */
+      }
+      #brandVisual ul {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        display: flex;
+        /* 포지션 속성을 사용할 것이기 때문에 플렉스는 사실 필요 없음 */
+        /* right는 부모의 길이가 구체적으로 잡혀있을 때 쓸 수 있음(절대단위일 때) relative에서도 안 잡힘. 상대적일 때 right를 못 씀. bottom도 높이가 정해져있을 때 쓸 수 있음. 상대적일 때 못 씀. 부모 값을 고정시켜야 적용 가능.*/
+      }
+      #brandVisual ul li {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        line-height: 500px;
+        font-size: 5em;
+      }
+      .visual_0 {
+        left: 0%;
+        background: red;
+      }
+      .visual_1 {
+        left: 100%;
+        background: green;
+      }
+      .visual_2 {
+        left: 200%;
+        background: blue;
+      }
+      #buttonList {
+        display: flex;
+        position: absolute;
+        /* body가 기준이 됨 */
+        top: 215px;
+        left: 50%;
+      }
+      #buttonList li {
+        width: 280px;
+        height: 180px;
+        /* background: url(/javascript/04/img/btn.png) 0 0 no-repeat; */
+        background: url(./) 0 -16px no-repeat;
+      }
+      #buttonList li.on {
+        width: 22px;
+        height: 17px;
+        background: url(/javascript/04/img/btn.png) 0 0 no-repeat;
+      }
+      .controls {
+        position: absolute;
+        top: 200px;
+        left: 50px;
+        border: 1px solid #333;
+        display: flex;
+      }
+
+      .controls li {
+        width: 16px;
+        height: 22px;
+        margin-left: 10px;
+      }
+
+      .controls li a {
+        display: block;
+        width: 16px;
+        height: 22px;
+      }
+
+      .controls li.prev a {
+        background: pink;
+      }
+
+      .controls li.next a {
+        background: pink;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="slide01.js"></script>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="brandVisual">
+        <ul>
+          <li class="visual_0"><a href="#">배너이미지1</a></li>
+          <li class="visual_1"><a href="#">배너이미지2</a></li>
+          <li class="visual_2"><a href="#">배너이미지3</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- 오리온 홈페이지에서는 제과/음료/간편대용식/바이오가 버튼리스트역할!! -->
+    <ul id="buttonList">
+      <li class="on"></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <ul class="controls">
+      <li class="prev">
+        <a href="#"></a>
+      </li>
+      <li class="next">
+        <a href="#"></a>
+      </li>
+    </ul>
+  </body>
+</html>
